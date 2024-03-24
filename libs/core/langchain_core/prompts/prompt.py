@@ -199,7 +199,8 @@ class PromptTemplate(StringPromptTemplate):
         Returns:
             The prompt loaded from the file.
         """
-        with open(str(template_file), "r") as f:
+#Solved the error of   UnicodeDecodeError when reading files in non-English languages        
+        with open(str(template_file), "r", encoding='utf-8', errors='ignore') as f:
             template = f.read()
         if input_variables:
             warnings.warn(
